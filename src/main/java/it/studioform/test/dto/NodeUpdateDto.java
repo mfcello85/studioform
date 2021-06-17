@@ -23,7 +23,7 @@ public class NodeUpdateDto {
         return id;
     }
 
-    @NotNull(groups = NodeDto.NewNodeValidationGroup.class)
+    @NotNull(groups = {NodeDto.NewNodeValidationGroup.class, NodeDto.UpdateNodeValidationGroup.class})
     @Size(max=250, min= 1,groups = {NodeDto.NewNodeValidationGroup.class, NodeDto.UpdateNodeValidationGroup.class})
     public String getDescription() {
         return description;

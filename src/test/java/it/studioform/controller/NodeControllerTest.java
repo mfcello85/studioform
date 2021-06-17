@@ -190,7 +190,7 @@ public class NodeControllerTest extends CommonTestUtil {
     }
 
     @ParameterizedTest
-    @MethodSource("descriptionUpdateSource")
+    @MethodSource("descriptionSource")
     public void shouldNotUpdateNodeGivenAWrongDescription(String description) throws Exception {
 
         NodeUpdateDto nodeUpdateDto = getNodeUpdateDto(1
@@ -206,14 +206,6 @@ public class NodeControllerTest extends CommonTestUtil {
                 .content(mapper.writeValueAsString(nodeUpdateDto))
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest());
-    }
-
-    public static Stream<Arguments> descriptionUpdateSource()
-    {
-        return Stream.of(Arguments.of( "", IntStream.range(0,251)
-                .boxed()
-                .map(s-> " ")
-                .collect(Collectors.joining())));
     }
 
     @Test
